@@ -1,9 +1,25 @@
 package com.test.testtaskjunior.entity;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @MappedSuperclass
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = TelevisionSet.class, name = "television"),
+        @JsonSubTypes.Type(value = VacuumCleaner.class, name = "vacuum"),
+        @JsonSubTypes.Type(value = Fridge.class, name = "fridge"),
+        @JsonSubTypes.Type(value = Smartphone.class, name = "smartphone"),
+        @JsonSubTypes.Type(value = Computer.class, name = "computer"),
+})
 public class Model {
     @Id
     @SequenceGenerator(name = "model_id_gen", sequenceName = "model_id_seq", allocationSize = 1)

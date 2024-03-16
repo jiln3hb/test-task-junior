@@ -1,10 +1,13 @@
 package com.test.testtaskjunior.entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "vacuum_cleaners")
+@JsonTypeName("vacuum")
 public class VacuumCleaner extends Model {
     private float volume;
     private int modsNumber;

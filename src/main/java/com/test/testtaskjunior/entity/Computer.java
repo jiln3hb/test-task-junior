@@ -1,10 +1,13 @@
 package com.test.testtaskjunior.entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "computers")
+@JsonTypeName("computer")
 public class Computer extends Model {
     private String category;
     private String CPUType;
