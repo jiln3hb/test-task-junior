@@ -1,0 +1,8 @@
+pring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/isas
+    username: admin
+    password: admin
+jpa:
+  hibernate:
+    ddl-auto: validate
