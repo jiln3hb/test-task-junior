@@ -1,6 +1,7 @@
 package com.test.testtaskjunior.entity;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -8,8 +9,11 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "computers")
 @JsonTypeName("computer")
+@Schema(description = "Сущность, описывающая модель компьютера в базе данных")
 public class Computer extends Model {
+    @Schema(description = "Категория компьютера")
     private String category;
+    @Schema(description = "Тип центрального процессора")
     private String CPUType;
 
     public Computer() {
