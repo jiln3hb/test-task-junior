@@ -14,7 +14,6 @@ public class DBService {
     private final SmartphoneRepo smartphoneRepo;
     private final ComputerRepo computerRepo;
 
-    @Autowired
     public DBService(ProductRepo productRepo, TelevisionSetRepo televisionSetRepo, VacuumCleanerRepo vacuumCleanerRepo, FridgeRepo fridgeRepo, SmartphoneRepo smartphoneRepo, ComputerRepo computerRepo) {
         this.productRepo = productRepo;
         this.televisionSetRepo = televisionSetRepo;
