@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 @JsonTypeName("computer")
 @Schema(description = "Сущность, описывающая модель компьютера в базе данных")
 public class Computer extends Model {
-    @Schema(description = "Категория компьютера")
+    @Schema(description = "Категория компьютера", required = true)
     private String category;
-    @Schema(description = "Тип центрального процессора")
+    @Schema(description = "Тип центрального процессора", required = true)
     private String CPUType;
 
     public Computer() {
