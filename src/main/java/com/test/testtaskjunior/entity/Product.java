@@ -1,12 +1,19 @@
 package com.test.testtaskjunior.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
 @Schema(description = "Сущность, описывающая линейку продуктов")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Product {
     @Id
     @SequenceGenerator(name = "product_id_gen", sequenceName = "product_id_seq", allocationSize = 1)
@@ -23,37 +30,11 @@ public class Product {
     @Schema(description = "Определяет доступна ли рассрочка", example = "false", required = true)
     private boolean instalmentOption;
 
-    @Override
-    public String toString() {
-        return  "{id= " + id +
-                ", name= '" + name + '\'' +
-                ", manufactureCountry= '" + manufactureCountry + '\'' +
-                ", manufactureCompany= '" + manufactureCompany + '\'' +
-                ", onlineAvailable= " + onlineAvailable +
-                ", instalmentOption= " + instalmentOption + '}';
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getManufactureCountry() {
-        return manufactureCountry;
-    }
-
-    public String getManufactureCompany() {
-        return manufactureCompany;
-    }
-
-    public boolean isOnlineAvailable() {
-        return onlineAvailable;
-    }
-
-    public boolean isInstalmentOption() {
-        return instalmentOption;
+    public Product(String name, String manufactureCountry, String manufactureCompany, boolean onlineAvailable, boolean instalmentOption) {
+        this.name = name;
+        this.manufactureCountry = manufactureCountry;
+        this.manufactureCompany = manufactureCompany;
+        this.onlineAvailable = onlineAvailable;
+        this.instalmentOption = instalmentOption;
     }
 }
