@@ -7,9 +7,11 @@ import com.test.testtaskjunior.exception.BadRequestException;
 import com.test.testtaskjunior.mapper.ModelDTOMapper;
 import com.test.testtaskjunior.mapper.ProductDTOMapper;
 import com.test.testtaskjunior.repository.*;
+import com.test.testtaskjunior.util.SearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Tuple;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +26,7 @@ public class DBService {
     private final FridgeRepo fridgeRepo;
     private final SmartphoneRepo smartphoneRepo;
     private final ComputerRepo computerRepo;
+    private final ModelDao modelDao;
 
     private final ProductDTOMapper productDTOMapper;
     private final ModelDTOMapper modelDTOMapper;
@@ -61,6 +64,10 @@ public class DBService {
                 else throw new BadRequestException();
                 break;
         }
+    }
+
+    public List<Model> searchModels(SearchCriteria searchCriteria) {
+        return modelDao.findModelsByCriteria(searchCriteria);
     }
 
     private <T extends Model> boolean isValid(T t) {
