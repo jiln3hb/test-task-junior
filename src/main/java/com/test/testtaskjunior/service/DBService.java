@@ -11,7 +11,6 @@ import com.test.testtaskjunior.util.SearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Tuple;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,13 +59,14 @@ public class DBService {
                 break;
             case COMPUTER:
                 Computer computer = modelDTOMapper.toComputer(modelDTO);
+                System.out.println(computer.getCPUType());
                 if (isValid(computer)) computerRepo.save(computer);
                 else throw new BadRequestException();
                 break;
         }
     }
 
-    public List<Model> searchModels(SearchCriteria searchCriteria) {
+    public List<Object> searchModels(SearchCriteria searchCriteria) {
         return modelDao.findModelsByCriteria(searchCriteria);
     }
 
@@ -80,7 +80,6 @@ public class DBService {
             f.setAccessible(true);
             try {
                 if (f.get(t) == null) return true;
-
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
@@ -97,7 +96,6 @@ public class DBService {
             f.setAccessible(true);
             try {
                 if (f.get(t) == null) return true;
-
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }

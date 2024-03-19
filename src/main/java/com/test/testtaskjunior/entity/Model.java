@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @MappedSuperclass
-@Schema(description = "Надкласс для всех сущностей моделей, описывающий их общие свойства")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
