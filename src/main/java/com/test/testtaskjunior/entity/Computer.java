@@ -8,11 +8,13 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "computers")
 @NoArgsConstructor
 @Getter
 @Setter
 public class Computer extends Model {
     private String category;
+    @Column(name = "cpu_type")
     private String CPUType;
 
     public Computer(Long productId, String name, String serialNumber, String color, String size, BigDecimal price, boolean availability, String category, String CPUType) {

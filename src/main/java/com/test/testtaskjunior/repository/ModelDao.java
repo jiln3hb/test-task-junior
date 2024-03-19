@@ -29,7 +29,7 @@ public class ModelDao {
 
         criteriaQuery.where(buildPredicates(criteriaBuilder, rootTV, rootVacuum, rootFridge, rootSmartphone, rootComputer, searchCriteria));
 
-        criteriaQuery.multiselect(rootTV, rootVacuum, rootFridge, rootSmartphone);
+        criteriaQuery.multiselect(rootTV, rootVacuum, rootFridge, rootSmartphone, rootComputer);
 
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
